@@ -1,0 +1,15 @@
+*.iml
+*.log
+.idea/
+target/
+.settings/
+.classpath
+.project
+.DS_Store
+ignore-*/
+
+# mwb备份文件
+doc/db/design/*.mwb.bak
+
+rebel.xml
+.rebel.xml.bak
