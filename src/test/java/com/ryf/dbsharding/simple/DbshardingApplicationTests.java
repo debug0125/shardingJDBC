@@ -31,7 +31,6 @@ public class DbshardingApplicationTests {
 		}
 	}
 
-	// order_id % 2 +1
 	@Test
 	public void testSelectOrderbyIds(){
 		List<Long> ids = new ArrayList<>();
@@ -43,7 +42,6 @@ public class DbshardingApplicationTests {
 		System.out.println(maps);
 	}
 
-	// order_id % 2 +1
 	@Test
 	public void testSelectOrderbyIdsAndUserId(){
 		List<Long> ids = new ArrayList<>();
@@ -55,15 +53,17 @@ public class DbshardingApplicationTests {
 		System.out.println(maps);
 	}
 
-	// order_id % 总分表数 % 每个库分表数 +1
 	@Test
-	public void testSelectOrderbyIdsNew(){
+	public void testSelectOrderbyIdsAndUserIds(){
 		List<Long> ids = new ArrayList<>();
-		ids.add(488028492315754497L); //db_1 -> order_1
-//		ids.add(488028492257034241L); //db_1 -> order_2
-//		ids.add(487643842741272576L); //db_2 -> order_1
-//		ids.add(488028492257034241L); //db_2 -> order_2
-		List<Map> maps = orderDao.selectOrderbyIds(ids);
+		ids.add(488330710763962368L); //db_1 -> order_1
+//		ids.add(488330710776545281L); //db_1 -> order_2
+		ids.add(488330710726213632L); //db_2 -> order_1
+//		ids.add(488310734850097153L); //db_2 -> order_2
+		List<Long> userIds = new ArrayList<>();
+		userIds.add(1L);
+		userIds.add(2L);
+		List<Map> maps = orderDao.selectOrderbyIdsAndUserIds(ids,userIds);
 		System.out.println(maps);
 	}
 

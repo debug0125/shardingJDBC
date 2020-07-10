@@ -28,9 +28,9 @@ public class SnoWalkerComplexShardingDB implements ComplexKeysShardingAlgorithm<
                 }
             }
             //匹配到一种路由规则就可以退出
-            if (shardingResults.size() > 0) {
-                break;
-            }
+//            if (shardingResults.size() > 0) {
+//                break;
+//            }
         }
         return shardingResults;
     }

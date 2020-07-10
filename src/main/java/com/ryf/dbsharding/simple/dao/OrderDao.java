@@ -61,6 +61,26 @@ public interface OrderDao {
             "</script>"})
     List<Map> selectOrderbyIdsAndUserId(@Param("orderIds") List<Long> orderIds, Long userId);
 
+    /**
+     * 查询订单
+     * @param orderIds
+     * @return
+     */
+    @Select({"<script>" +
+            "select " +
+            " * " +
+            " from t_order t" +
+            " where t.order_id in " +
+            "<foreach collection='orderIds' item='id' open='(' separator=',' close=')'>" +
+            " #{id} " +
+            "</foreach>"+
+            "and user_id in " +
+            "<foreach collection='userIds' item='uesrId' open='(' separator=',' close=')'>" +
+            " #{uesrId} " +
+            "</foreach>"+
+            "</script>"})
+    List<Map> selectOrderbyIdsAndUserIds(@Param("orderIds") List<Long> orderIds, List<Long> userIds);
+
     @Select("select * from t_order order by order_id")
     List<Map> selectListOrderByOrderId();
 
