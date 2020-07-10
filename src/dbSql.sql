@@ -9,6 +9,7 @@ CREATE TABLE `t_order_1`  (
   `price` decimal(10, 2) NOT NULL COMMENT '订单价格',
   `user_id` bigint(20) NOT NULL COMMENT '下单用户id',
   `status` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态',
+  `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -18,6 +19,7 @@ CREATE TABLE `t_order_2`  (
   `price` decimal(10, 2) NOT NULL COMMENT '订单价格',
   `user_id` bigint(20) NOT NULL COMMENT '下单用户id',
   `status` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态',
+  `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -27,5 +29,6 @@ CREATE TABLE `t_order_3`  (
   `price` decimal(10, 2) NOT NULL COMMENT '订单价格',
   `user_id` bigint(20) NOT NULL COMMENT '下单用户id',
   `status` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态',
+  `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;

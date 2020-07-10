@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +25,8 @@ public interface OrderDao {
      * @param status
      * @return
      */
-    @Insert("insert into t_order(price,user_id,status)values(#{price},#{userId},#{status})")
-    int insertOrder(@Param("price") BigDecimal price, @Param("userId") Long userId, @Param("status") String status);
+    @Insert("insert into t_order(price,user_id,status,create_date)values(#{price},#{userId},#{status},#{date})")
+    int insertOrder(@Param("price") BigDecimal price, @Param("userId") Long userId, @Param("status") String status, Date date);
 
     /**
      * 查询订单
@@ -42,6 +43,23 @@ public interface OrderDao {
             "</foreach>"+
             "</script>"})
     List<Map> selectOrderbyIds(@Param("orderIds") List<Long> orderIds);
+
+    /**
+     * 查询订单
+     * @param orderIds
+     * @return
+     */
+    @Select({"<script>" +
+            "select " +
+            " * " +
+            " from t_order t" +
+            " where t.order_id in " +
+            "<foreach collection='orderIds' item='id' open='(' separator=',' close=')'>" +
+            " #{id} " +
+            "</foreach>"+
+            "and user_id = #{userId}"+
+            "</script>"})
+    List<Map> selectOrderbyIdsAndUserId(@Param("orderIds") List<Long> orderIds, Long userId);
 
     @Select("select * from t_order order by order_id")
     List<Map> selectListOrderByOrderId();
